@@ -1,7 +1,7 @@
 package com.tracker.ebook.controllers;
 
+import com.tracker.ebook.dto.EbookListResponse;
 import com.tracker.ebook.dto.EbookResponse;
-import com.tracker.ebook.entities.Ebook;
 import com.tracker.ebook.services.EbookServiceImpl;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +17,12 @@ public class EbookController {
     EbookServiceImpl ebookServiceImpl;
 
     @PostMapping("/add")
-    public void saveEbook(@RequestBody Ebook ebook) {
-        ebookServiceImpl.addEbook(ebook);
+    public ResponseEntity<?> saveEbook(@RequestBody EbookResponse ebookResponse) {
+        try {
+            return ResponseEntity.status(HttpStatus.CREATED).body(ebookServiceImpl.addEbook(ebookResponse));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 
     @GetMapping("/allebooks")
@@ -26,7 +30,7 @@ public class EbookController {
         try {
             return ResponseEntity.ok(ebookServiceImpl.findAllEbooks());
         } catch (Exception e) {
-            return ResponseEntity.ok(new EbookResponse(false, null));
+            return ResponseEntity.ok(new EbookListResponse(false, null));
         }
     }
 
@@ -35,7 +39,7 @@ public class EbookController {
         try {
             return ResponseEntity.ok(ebookServiceImpl.findEbookById(id));
         }  catch (Exception e) {
-            return ResponseEntity.ok(new EbookResponse(false, null));
+            return ResponseEntity.ok(new EbookListResponse(false, null));
         }
     }
 
