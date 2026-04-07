@@ -1,5 +1,6 @@
 package com.tracker.ebook.controllers;
 
+import com.tracker.ebook.dto.EbookResponse;
 import com.tracker.ebook.entities.Ebook;
 import com.tracker.ebook.services.EbookServiceImpl;
 import org.bson.types.ObjectId;
@@ -7,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/ebookviewer")
@@ -23,20 +22,24 @@ public class EbookController {
     }
 
     @GetMapping("/allebooks")
-    public ResponseEntity<List<Ebook>> getAllEbooks() {
+    public ResponseEntity<?> getAllEbooks() {
         try {
             return ResponseEntity.ok(ebookServiceImpl.findAllEbooks());
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+            return ResponseEntity.ok(new EbookResponse(false, null));
         }
     }
 
     @GetMapping("/id/{id}")
-    public Ebook getEbookById(@PathVariable ObjectId id) {
-        return ebookServiceImpl.findEbookById(id);
+    public ResponseEntity<?> getEbookById(@PathVariable ObjectId id) {
+        try {
+            return ResponseEntity.ok(ebookServiceImpl.findEbookById(id));
+        }  catch (Exception e) {
+            return ResponseEntity.ok(new EbookResponse(false, null));
+        }
     }
 
-    @DeleteMapping("/deleteid/{id}")
+    @DeleteMapping("/id/{id}")
     public ResponseEntity<?> deleteEbookById(@PathVariable ObjectId id) {
         try {
             boolean removed = ebookServiceImpl.deleteEbookById(id);
