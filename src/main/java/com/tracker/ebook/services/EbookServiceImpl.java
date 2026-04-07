@@ -1,5 +1,6 @@
 package com.tracker.ebook.services;
 
+import com.tracker.ebook.dto.EbookListResponse;
 import com.tracker.ebook.entities.Ebook;
 import com.tracker.ebook.repositories.EbookRepository;
 import org.bson.types.ObjectId;
@@ -17,7 +18,7 @@ public class EbookServiceImpl implements EbookService {
 
     @Override
     public List<Ebook> findAllEbooks() {
-        return ebookRepository.findAll();
+        return new EbookListResponse(true, ebookRepository.findAll()).getEbookList();
     }
 
     @Override
