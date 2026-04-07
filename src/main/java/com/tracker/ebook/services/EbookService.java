@@ -1,5 +1,6 @@
 package com.tracker.ebook.services;
 
+import com.tracker.ebook.dto.EbookResponse;
 import com.tracker.ebook.entities.Ebook;
 import org.bson.types.ObjectId;
 
@@ -11,7 +12,7 @@ public interface EbookService {
 
     Ebook findEbookById(ObjectId id);
 
-    void addEbook(Ebook ebook);
+    Ebook addEbook(EbookResponse ebookResponse);
 
     Boolean deleteEbookById(ObjectId id);
 }
