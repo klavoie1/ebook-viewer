@@ -1,19 +1,17 @@
 package com.tracker.ebook.services;
 
 import com.tracker.ebook.entities.Ebook;
-import com.tracker.ebook.repositories.EbookRepository;
-import org.springframework.stereotype.Service;
+import org.bson.types.ObjectId;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public interface EbookService {
 
-    ArrayList<Ebook> findAllEbooks();
+    List<Ebook> findAllEbooks();
 
-    Ebook findEbookById(String id);
+    Ebook findEbookById(ObjectId id);
 
     void addEbook(Ebook ebook);
 
-    void deleteAllEbooks();
-
+    Boolean deleteEbookById(ObjectId id);
 }
