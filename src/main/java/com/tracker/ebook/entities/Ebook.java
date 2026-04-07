@@ -1,11 +1,11 @@
 package com.tracker.ebook.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mongodb.lang.Nullable;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.time.LocalDateTime;
@@ -22,13 +22,14 @@ public class Ebook {
 
     private String author;
 
-    @Indexed(unique=true)
+    @Nullable
     private String isbn;
 
     private String publishedDate;
 
     private List<String> genre;
 
+    @Nullable
     private String summary;
 
     private List<String> characters;
