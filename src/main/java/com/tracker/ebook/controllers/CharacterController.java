@@ -25,7 +25,7 @@ public class CharacterController {
         }
     }
 
-    @GetMapping("/allcharacters")
+    @GetMapping("/all")
     public ResponseEntity<?> getAllCharacters() {
         try {
             return ResponseEntity.ok(characterServiceImpl.findAllCharacters());

@@ -25,7 +25,7 @@ public class EbookController {
         }
     }
 
-    @GetMapping("/allebooks")
+    @GetMapping("/all")
     public ResponseEntity<?> getAllEbooks() {
         try {
             return ResponseEntity.ok(ebookServiceImpl.findAllEbooks());
