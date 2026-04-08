@@ -44,7 +44,6 @@ public class Ebook {
 
     public Ebook(ObjectId _id, String title, String author, String isbn, String publishedDate, List<String> genre,
                  String summary, List<String> characters, Metadata metadata) {
-        super();
         this._id = _id;
         this.title = title;
         this.author = author;
