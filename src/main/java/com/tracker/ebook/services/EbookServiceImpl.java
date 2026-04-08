@@ -1,12 +1,14 @@
 package com.tracker.ebook.services;
 
 import com.tracker.ebook.dto.EbookListResponse;
+import com.tracker.ebook.dto.EbookResponse;
 import com.tracker.ebook.entities.Ebook;
 import com.tracker.ebook.repositories.EbookRepository;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,9 +29,19 @@ public class EbookServiceImpl implements EbookService {
         return ebook.orElse(null);
     }
 
-    @Override
-    public void addEbook(Ebook ebook) {
-        ebookRepository.save(ebook);
+    public Ebook addEbook(EbookResponse ebookResponse) {
+        Ebook newEbook = new Ebook.Builder()
+                .title(ebookResponse.getTitle())
+                .author(ebookResponse.getAuthor())
+                .isbn(ebookResponse.getIsbn())
+                .publishedDate(ebookResponse.getPublishedDate())
+                .genre(ebookResponse.getGenre())
+                .summary(ebookResponse.getSummary())
+                .characters(ebookResponse.getCharacters())
+                .metadata(ebookResponse.getMetadata())
+                .build();
+
+        return  ebookRepository.save(newEbook);
     }
 
     @Override
