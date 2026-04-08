@@ -15,4 +15,6 @@ public interface CharacterService {
     Character addCharacter(CharacterResponse characterResponse);
 
     Boolean deleteCharacter(ObjectId id);
+
+    Character updateCharacter(ObjectId id, CharacterResponse characterResponse);
 }

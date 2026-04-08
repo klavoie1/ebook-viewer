@@ -10,7 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/ebookviewer")
+@RequestMapping("/ebookviewer/ebook")
 public class EbookController {
 
     @Autowired
@@ -53,6 +53,15 @@ public class EbookController {
                 return ResponseEntity.badRequest().build();
             }
         } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/id/{id}")
+    public ResponseEntity<?> updateEbook(@PathVariable ObjectId id, @RequestBody EbookResponse ebookResponse) {
+        try {
+            return ResponseEntity.ok(ebookServiceImpl.updateEbook(id, ebookResponse));
+        }  catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
     }

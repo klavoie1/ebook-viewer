@@ -59,4 +59,20 @@ public class CharacterServiceImpl implements CharacterService {
         characterRepository.delete(character);
         return true;
     }
+
+    /**
+     * @param id
+     * @param characterResponse
+     * @return Updates character based off id supplied.
+     */
+    @Override
+    public Character updateCharacter(ObjectId id, CharacterResponse characterResponse) {
+        Character existingCharacter = characterRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Character not found with id: " + id));
+
+        existingCharacter.setName(characterResponse.getName());
+        existingCharacter.setDescription(characterResponse.getDescription());
+
+        return characterRepository.save(existingCharacter);
+    }
 }

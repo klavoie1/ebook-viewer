@@ -52,4 +52,27 @@ public class EbookServiceImpl implements EbookService {
         return true;
     }
 
+    /**
+     * @param id
+     * @param ebookResponse
+     * @return Updates Ebook based off id supplied
+     */
+    @Override
+    public Ebook updateEbook(ObjectId id, EbookResponse ebookResponse) {
+        Ebook existingEbook = ebookRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Ebook not found with id " + id));
+
+        existingEbook.setTitle(ebookResponse.getTitle());
+        existingEbook.setAuthor(ebookResponse.getAuthor());
+        existingEbook.setIsbn(ebookResponse.getIsbn());
+        existingEbook.setPublishedDate(ebookResponse.getPublishedDate());
+        existingEbook.setGenre(ebookResponse.getGenre());
+        existingEbook.setSummary(ebookResponse.getSummary());
+        existingEbook.setCharacters(ebookResponse.getCharacters());
+        existingEbook.setMetadata(ebookResponse.getMetadata());
+
+        return ebookRepository.save(existingEbook);
+    }
+
+
 }

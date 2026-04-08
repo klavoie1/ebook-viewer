@@ -15,4 +15,6 @@ public interface EbookService {
     Ebook addEbook(EbookResponse ebookResponse);
 
     Boolean deleteEbookById(ObjectId id);
+
+    Ebook updateEbook(ObjectId id, EbookResponse ebookResponse);
 }

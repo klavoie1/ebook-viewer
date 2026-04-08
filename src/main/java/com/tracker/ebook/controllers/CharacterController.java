@@ -42,7 +42,7 @@ public class CharacterController {
             return ResponseEntity.ok(new CharacterListResponse(false, null));
         }
     }
-    
+
     @DeleteMapping("/id/{id}")
     public ResponseEntity<?> deleteCharacter(@PathVariable ObjectId id) {
         try {
@@ -52,6 +52,15 @@ public class CharacterController {
             } else {
                 return ResponseEntity.badRequest().build();
             }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
+    @PutMapping("/id/{id}")
+    public ResponseEntity<?> updateCharacter(@PathVariable ObjectId id, @RequestBody CharacterResponse characterResponse) {
+        try {
+            return ResponseEntity.ok(characterServiceImpl.updateCharacter(id, characterResponse));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
         }
