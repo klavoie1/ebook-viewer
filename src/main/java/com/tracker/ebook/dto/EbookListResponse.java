@@ -18,10 +18,8 @@ public class EbookListResponse {
     public EbookListResponse() {}
 
     public boolean isSuccess() { return success; }
-
     public List<Ebook> getEbookList() { return ebookList; }
 
     public void setSuccess(boolean success) { this.success = success; }
-
     public void setEbookList(List<Ebook> ebookList) { this.ebookList = ebookList; }
 }
