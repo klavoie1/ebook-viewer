@@ -1,6 +1,7 @@
 package com.tracker.ebook.entities;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.mongodb.lang.Nullable;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
@@ -18,8 +19,10 @@ public class Character {
 
     private String name;
 
+    @Nullable
     private String description;
 
+    @Nullable
     private String imagePath;
 
     @CreatedDate
