@@ -25,8 +25,9 @@ export default function EbookList() {
     if (loading) return <div className="p-8 text-light-a0">Loading...</div>;
 
     return (
-        <div className="flex flex-col items-center justify-center min-h-screen bg-surface-a0 p-8">
-            <h1 className="text-3xl font-bold mb-8 text-light-a0">All Ebooks</h1>
+        <div className="flex flex-col items-center justify-start min-h-screen bg-surface-a0 p-8">
+            <h1 className="text-4xl font-bold mb-8 text-light-a0">All Ebooks</h1>
+            <hr className="border border-primary-a0 w-full mb-9"/>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-8">
                 {ebooks.map(ebook => (
                     <Link
