@@ -34,8 +34,7 @@ public class Ebook {
     private String summary;
 
     private List<String> characters;
-
-    @DBRef
+    
     private Metadata metadata;
 
     @CreatedDate
