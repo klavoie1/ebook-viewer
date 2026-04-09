@@ -17,7 +17,7 @@ export default function Navbar() {
         <nav className="bg-surface-a20 text-white p-4 sticky top-0 z-50 shadow-md border-b-2 border-surface-a50">
             <div className="flex flex-row justify-between items-center">
 
-                <Link to="/" className="text-2xl font-bold shrink-0">Ebook Tracker</Link>
+                <Link to="/" className="text-3xl font-bold shrink-0">Ebook Tracker</Link>
 
                 <div className="flex items-center space-x-8">
                     <form onSubmit={handleSearch} className="w-96 border border-light-a0 rounded-lg hover:border-primary-a0">
@@ -31,8 +31,8 @@ export default function Navbar() {
                     </form>
 
                     <div className="space-x-6 shrink-0">
-                        <Link to="/" className="hover:underline hover:animate-pulse hover:text-primary-a40">Home</Link>
-                        <Link to="/ebooks" className="hover:underline hover:animate-pulse hover:text-primary-a40">Ebooks</Link>
+                        <Link to="/" className="hover:text-primary-a40">Home</Link>
+                        <Link to="/ebooks" className="hover:text-primary-a40">Ebooks</Link>
                     </div>
                 </div>
 
