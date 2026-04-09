@@ -51,17 +51,23 @@ export default function EbookList() {
                         <div className="absolute inset-0 bg-linear-to-t from-dark-a0/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
 
                             {/*Creates a badge near the top left of the book card. Not sure if implemented in the cleanest way, but it works for now. May need to revisit.*/}
-                            <div className="absolute inset-y-0 left-0 justify-start items-left p-4">
-                                <label className="text-sm text-dark-a0 bg-primary-a10 p-0.75 rounded-md">{ebook.metadata && ebook.metadata.fileFormat}</label>
+                            <div className="absolute inset-s-0 top-0 left-0 justify-start items-left p-4">
+                                <label className="text-sm text-dark-a0 bg-primary-a10/70 p-0.75 rounded-lg">{ebook.metadata && ebook.metadata.fileFormat}</label>
                             </div>
 
                             <h2 className="text-light-a0 text-lg font-bold leading-tight">{ebook.title}</h2>
                             <p className="text-surface-a50 text-sm mt-1">{ebook.author}</p>
                             <div className="mt-2 flex flex-wrap gap-1">
                                 {ebook.genre.slice(0, 4).map((g, i) => (
-                                    <span key={i} className="text-[10px] bg-light-a0/20 text-light-a0 px-2 py-0.5 rounded">
-                                        {g}
-                                    </span>
+                                    <Link
+                                        key={ebook}
+                                        to={'/ebook/tag/' + g}
+                                        >
+
+                                        <span key={i} className="text-[11px] bg-light-a0/20 text-light-a0 px-2 py-0.5 rounded hover:bg-surface-a50">
+                                            {g}
+                                        </span>
+                                    </Link>
                                 ))}
                             </div>
                         </div>
