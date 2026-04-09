@@ -27,7 +27,7 @@ export default function EbookList() {
     return (
         <div className="flex flex-col items-center justify-center min-h-screen bg-surface-a0 p-8">
             <h1 className="text-3xl font-bold mb-8 text-light-a0">All Ebooks</h1>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-8">
                 {ebooks.map(ebook => (
                     <Link
                         key={ebook._id.$oid}
@@ -48,6 +48,12 @@ export default function EbookList() {
                         )}
 
                         <div className="absolute inset-0 bg-linear-to-t from-dark-a0/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+
+                            {/*Creates a badge near the top left of the book card. Not sure if implemented in the cleanest way, but it works for now. May need to revisit.*/}
+                            <div className="absolute inset-y-0 left-0 justify-start items-left p-4">
+                                <label className="text-sm text-dark-a0 bg-primary-a10 p-0.75 rounded-md">{ebook.metadata && ebook.metadata.fileFormat}</label>
+                            </div>
+
                             <h2 className="text-light-a0 text-lg font-bold leading-tight">{ebook.title}</h2>
                             <p className="text-surface-a50 text-sm mt-1">{ebook.author}</p>
                             <div className="mt-2 flex flex-wrap gap-1">
