@@ -18,7 +18,7 @@ export default function Navbar() {
             <div className="max-w-6xl mx-auto flex justify-between items-center">
                 <Link to="/" className="text-2xl font-bold">Ebook Tracker</Link>
 
-                <form onSubmit={handleSearch} className="flex-1 mx-8 border border-light-a0 rounded-lg">
+                <form onSubmit={handleSearch} className="flex-1 mx-8 border border-light-a0 rounded-lg hover:border-primary-a0">
                     <input
                         type="text"
                         placeholder="Search Ebooks, Characters..."
