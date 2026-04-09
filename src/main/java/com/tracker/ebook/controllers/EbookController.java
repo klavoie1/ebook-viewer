@@ -2,6 +2,7 @@ package com.tracker.ebook.controllers;
 
 import com.tracker.ebook.dto.EbookListResponse;
 import com.tracker.ebook.dto.EbookResponse;
+import com.tracker.ebook.entities.Ebook;
 import com.tracker.ebook.services.EbookServiceImpl;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 @RestController
 @RequestMapping("/ebookviewer/ebook")
@@ -89,6 +91,11 @@ public class EbookController {
         } catch (Exception e) {
             return ResponseEntity.internalServerError().build();
         }
+    }
+
+    @GetMapping("/genre/{genre}")
+    public ResponseEntity<List<Ebook>> getEbooksByGenre(@PathVariable String genre) {
+        return ResponseEntity.ok(ebookServiceImpl.findByGenre(genre));
     }
 
 }

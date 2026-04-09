@@ -59,15 +59,17 @@ export default function EbookList() {
                             <p className="text-surface-a50 text-sm mt-1">{ebook.author}</p>
                             <div className="mt-2 flex flex-wrap gap-1">
                                 {ebook.genre.slice(0, 4).map((g, i) => (
-                                    <Link
-                                        key={ebook}
-                                        to={'/ebook/tag/' + g}
-                                        >
-
-                                        <span key={i} className="text-[11px] bg-light-a0/20 text-light-a0 px-2 py-0.5 rounded hover:bg-surface-a50">
-                                            {g}
-                                        </span>
-                                    </Link>
+                                    <span
+                                        key={`${ebook._id.$oid}-${g}`}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            e.stopPropagation();
+                                            window.location.href = `/ebook/genre/${g}`;
+                                        }}
+                                        className="text-[11px] bg-light-a0/20 text-light-a0 px-2 py-0.5 rounded hover:bg-surface-a50 cursor-pointer relative z-10"
+                                    >
+                                        {g}
+                                    </span>
                                 ))}
                             </div>
                         </div>

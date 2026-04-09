@@ -74,5 +74,15 @@ public class EbookServiceImpl implements EbookService {
         return ebookRepository.save(existingEbook);
     }
 
+    /**
+     * @param genre
+     * @return A list of books that contain the specified tag in the genre section of the ebook metadata.
+     */
+    @Override
+    public List<Ebook> findByGenre(String genre) {
+        List<Ebook> results = ebookRepository.findByGenreContaining(genre);
+        return results.subList(0, Math.min(results.size(), 10)); // 10 is the limit here, probably fine to make larger: Need to check at later date with larger DB
+    }
+
 
 }

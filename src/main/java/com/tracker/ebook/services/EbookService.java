@@ -17,4 +17,6 @@ public interface EbookService {
     Boolean deleteEbookById(ObjectId id);
 
     Ebook updateEbook(ObjectId id, EbookResponse ebookResponse);
+
+    List<Ebook> findByGenre(String genre);
 }
