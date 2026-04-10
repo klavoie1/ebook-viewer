@@ -29,3 +29,20 @@ export const getEbookById = async (id) => {
     }
     return await response.json();
 };
+
+export const updateEbook = async (id, ebookData) => {
+    const response = await fetch(`${API_BASE_URL}/ebook/id/${id}`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(ebookData),
+    });
+
+    if (!response.ok) {
+        const errorMsg = await response.text();
+        throw new Error(`Failed to update ebook: ${errorMsg}`);
+    }
+
+    return await response.json();
+};
