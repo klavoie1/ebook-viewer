@@ -81,7 +81,7 @@ public class EbookServiceImpl implements EbookService {
     @Override
     public List<Ebook> findByGenre(String genre) {
         List<Ebook> results = ebookRepository.findByGenreContaining(genre);
-        return results.subList(0, Math.min(results.size(), 10)); // 10 is the limit here, probably fine to make larger: Need to check at later date with larger DB
+        return results.subList(0, Math.min(results.size(), 100)); // 100 is the limit here, probably fine to make larger: Need to check at later date with larger DB
     }
 
     public int findEbookListTotal() {
