@@ -6,8 +6,9 @@ import org.bson.types.ObjectId;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
+import tools.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.databind.ser.std.ToStringSerializer;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,6 +18,7 @@ public class Ebook {
 
     @Id
     @JsonProperty("_id")
+    @JsonSerialize(using = ToStringSerializer.class)
     private ObjectId _id;
 
     private String title;
@@ -34,7 +36,7 @@ public class Ebook {
     private String summary;
 
     private List<String> characters;
-    
+
     private Metadata metadata;
 
     @CreatedDate

@@ -7,6 +7,8 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.mongodb.core.mapping.Document;
+import tools.jackson.databind.annotation.JsonSerialize;
+import tools.jackson.databind.ser.std.ToStringSerializer;
 
 import java.time.LocalDateTime;
 
@@ -15,6 +17,7 @@ public class Character {
 
     @Id
     @JsonProperty("_id")
+    @JsonSerialize(using = ToStringSerializer.class)
     private ObjectId _id;
 
     private String name;
