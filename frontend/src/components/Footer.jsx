@@ -14,28 +14,13 @@ export default function Footer() {
 
                 <div className="flex justify-end space-x-6 text-sm shrink-0">
                     <a
-                        href="https://github.com"
+                        href="https://github.com/klavoie1/ebook-viewer"
                         target="_blank"
                         rel="noopener noreferrer"
+
                         className="hover:text-primary-a40 transition-colors"
                     >
                         GitHub
-                    </a>
-                    <a
-                        href="https://linkedin.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-primary-a40 transition-colors"
-                    >
-                        LinkedIn
-                    </a>
-                    <a
-                        href=""
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:text-primary-a40 transition-colors"
-                    >
-                        Website
                     </a>
                 </div>
 
