@@ -19,4 +19,6 @@ public interface EbookService {
     Ebook updateEbook(ObjectId id, EbookResponse ebookResponse);
 
     List<Ebook> findByGenre(String genre);
+
+    int findEbookListTotal();
 }

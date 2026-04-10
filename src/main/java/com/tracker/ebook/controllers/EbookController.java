@@ -98,4 +98,13 @@ public class EbookController {
         return ResponseEntity.ok(ebookServiceImpl.findByGenre(genre));
     }
 
+    @GetMapping
+    public ResponseEntity<?> findEbookListTotal() {
+        try {
+            return ResponseEntity.ok(ebookServiceImpl.findEbookListTotal());
+        }  catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(e.getMessage());
+        }
+    }
+
 }

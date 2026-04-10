@@ -1,17 +1,23 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { getEbookList} from "../services/EbookListService.jsx";
+import { getEbookList, findEbookListTotal } from "../services/EbookListService.jsx";
 
 export default function EbookList() {
     const [ebooks, setEbooks] = useState([]);
+    const [totalCount, setTotalCount] = useState(0); // Add state for the count
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        const fetchEbooks = async () => {
+        const fetchEbookData = async () => {
             setLoading(true);
             try {
-                const data = await getEbookList();
+                const [data, count] = await Promise.all([
+                    getEbookList(),
+                    findEbookListTotal()
+                ]);
+
                 setEbooks(data);
+                setTotalCount(count);
             } catch (error) {
                 console.error("Error fetching Ebooks", error);
             } finally {
@@ -19,7 +25,7 @@ export default function EbookList() {
             }
         };
 
-        fetchEbooks();
+        fetchEbookData();
     }, []);
 
     if (loading) return <div className="p-8 text-light-a0">Loading...</div>;
@@ -27,8 +33,13 @@ export default function EbookList() {
     return (
         <div className="flex flex-col items-center justify-start min-h-screen bg-surface-a0 p-8">
             <h1 className="text-4xl font-bold mb-8 text-light-a0">All Ebooks</h1>
+
             <hr className="border border-primary-a0 w-full mb-9"/>
+
+            <p className="text-surface-a50 mb-4 font-semibold">Total Ebooks: {totalCount}</p>
+
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-8">
+
                 {ebooks.map(ebook => (
                     <Link
                         key={ebook._id.$oid}
@@ -48,11 +59,11 @@ export default function EbookList() {
                             </div>
                         )}
 
-                        <div className="absolute inset-0 bg-linear-to-t from-dark-a0/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                        <div className="absolute inset-0 bg-linear-to-t from-dark-a0/90 via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
 
                             {/*Creates a badge near the top left of the book card. Not sure if implemented in the cleanest way, but it works for now. May need to revisit.*/}
                             <div className="absolute inset-s-0 top-0 left-0 justify-start items-left p-4">
-                                <label className="text-sm text-dark-a0 bg-primary-a10/70 p-0.75 rounded-lg">{ebook.metadata && ebook.metadata.fileFormat}</label>
+                                <label className="text-sm text-dark-a0 bg-primary-a30/90 p-0.75 rounded-lg">{ebook.metadata && ebook.metadata.fileFormat}</label>
                             </div>
 
                             <h2 className="text-light-a0 text-lg font-bold leading-tight">{ebook.title}</h2>

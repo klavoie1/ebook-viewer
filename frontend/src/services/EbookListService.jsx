@@ -13,3 +13,11 @@ export const getEbooksByGenre = async (genre) => {
     }
     return await response.json();
 };
+
+export const findEbookListTotal = async () => {
+    const response = await fetch(`${API_BASE_URL}/ebook`);
+    if (!response.ok) {
+        throw new Error("Failed to fetch total ebook count");
+    }
+    return await response.json();
+};

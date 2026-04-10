@@ -32,6 +32,8 @@ export default function TagPage() {
 
             <hr className="border border-primary-a0 w-full mb-9"/>
 
+            <p className="relative flex flex-row justify-end text-surface-a50 mb-6 top-0">Total {genre} Ebooks: {ebooks.length}</p>
+
             {ebooks.length === 0 ? (
                 <div className="text-light-a0 text-xl mt-10">No ebooks found for this tag.</div>
             ) : (
@@ -56,7 +58,7 @@ export default function TagPage() {
                             )}
 
 
-                            <div className="absolute inset-0 bg-linear-to-t from-dark-a0/90 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                            <div className="absolute inset-0 bg-linear-to-t from-dark-a0/90 via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
 
                                 <div className="absolute inset-s-0 top-0 left-0 justify-start items-left p-4">
                                     <label className="text-sm text-dark-a0 bg-primary-a10/70 p-0.75 rounded-lg">

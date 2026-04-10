@@ -84,5 +84,8 @@ public class EbookServiceImpl implements EbookService {
         return results.subList(0, Math.min(results.size(), 10)); // 10 is the limit here, probably fine to make larger: Need to check at later date with larger DB
     }
 
+    public int findEbookListTotal() {
+        return ebookRepository.findAll().size();
+    }
 
 }
