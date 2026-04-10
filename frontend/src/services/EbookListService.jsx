@@ -7,7 +7,7 @@ export async function getEbookList() {
 }
 
 export const getEbooksByGenre = async (genre) => {
-    const response = await fetch(`http://localhost:8080/ebookviewer/ebook/genre/${genre}`);
+    const response = await fetch(`${API_BASE_URL}/ebook/genre/${genre}`);
     if (!response.ok) {
         throw new Error(`Failed to fetch ebooks for genre: ${genre}`);
     }
