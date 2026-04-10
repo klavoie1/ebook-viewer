@@ -23,7 +23,7 @@ export default function TagPage() {
         fetchTaggedEbooks();
     }, [genre]);
 
-    if (loading) return <div className="p-8 text-light-a0">Loading ebooks for {genre}...</div>;
+    if (loading) return <div className="flex p-8 text-light-a0 max-h-screen h-screen items-center justify-center">Loading ebooks for {genre}...</div>;
 
     return (
         <div className="flex flex-col items-center justify-start min-h-screen bg-surface-a0 p-8">

@@ -29,7 +29,7 @@ export default function SearchResults() {
         if (query) fetchAndFilter();
     }, [query]);
 
-    if (loading) return <div className="p-8 text-light-a0 bg-surface-a0 min-h-screen">Loading results for "{query}"...</div>;
+    if (loading) return <div className="flex items-center justify-center p-8 text-light-a0 bg-surface-a0 max-h-screen h-screen">Loading results for "{query}"...</div>;
 
     return (
         <div className="flex flex-col items-center justify-start min-h-screen bg-surface-a0 p-8">

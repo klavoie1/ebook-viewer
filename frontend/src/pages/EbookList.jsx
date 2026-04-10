@@ -28,7 +28,7 @@ export default function EbookList() {
         fetchEbookData();
     }, []);
 
-    if (loading) return <div className="p-8 text-light-a0">Loading...</div>;
+    if (loading) return <div className="flex items-center justify-center p-8 text-light-a0 max-h-screen h-screen">Loading...</div>;
 
     return (
         <div className="flex flex-col items-center justify-start min-h-screen bg-surface-a0 p-8">
