@@ -21,3 +21,11 @@ export const findEbookListTotal = async () => {
     }
     return await response.json();
 };
+
+export const getEbookById = async (id) => {
+    const response = await fetch(`${API_BASE_URL}/ebook/id/${id}`);
+    if (!response.ok) {
+        throw new Error(`Failed to fetch ebook with id: ${id}`);
+    }
+    return await response.json();
+};
