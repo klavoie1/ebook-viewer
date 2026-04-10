@@ -10,12 +10,13 @@ export default function SearchResults() {
 
     useEffect(() => {
         const fetchAndFilter = async () => {
+            setLoading(true);
             try {
                 const allEbooks = await getEbookList();
                 const filtered = allEbooks.filter(ebook =>
                     ebook.title.toLowerCase().includes(query.toLowerCase()) ||
                     ebook.author.toLowerCase().includes(query.toLowerCase()) ||
-                    ebook.characters.some(char => char.toLowerCase().includes(query.toLowerCase()))
+                    (ebook.characters && ebook.characters.some(char => char.toLowerCase().includes(query.toLowerCase())))
                 );
                 setResults(filtered);
             } catch (error) {
@@ -28,26 +29,64 @@ export default function SearchResults() {
         if (query) fetchAndFilter();
     }, [query]);
 
-    if (loading) return <div className="p-8">Loading...</div>;
+    if (loading) return <div className="p-8 text-light-a0 bg-surface-a0 min-h-screen">Loading results for "{query}"...</div>;
 
     return (
-        <div className="p-8">
-            <h1 className="text-3xl font-bold mb-2">Search Results</h1>
-            <p className="text-gray-600 mb-8">Found {results.length} result(s) for "{query}"</p>
+        <div className="flex flex-col items-center justify-start min-h-screen bg-surface-a0 p-8">
+            <h1 className="text-4xl font-bold mb-2 text-light-a0">Search Results</h1>
+            <p className="text-surface-a50 mb-6">Found {results.length} result(s) for "{query}"</p>
+
+            <hr className="border border-primary-a0 w-full mb-9"/>
 
             {results.length === 0 ? (
-                <p className="text-gray-500">No ebooks found matching your search.</p>
+                <div className="text-light-a0 text-xl mt-10">No ebooks found matching your search.</div>
             ) : (
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-8">
                     {results.map(ebook => (
                         <Link
                             key={ebook._id.$oid}
                             to={`/ebooks/${ebook._id.$oid}`}
-                            className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition"
+                            className="relative group w-64 h-96 rounded-lg overflow-hidden shadow-xl hover:scale-105 transition-transform duration-300 bg-surface-a20"
                         >
-                            <h2 className="text-xl font-bold mb-2">{ebook.title}</h2>
-                            <p className="text-gray-600 mb-4">{ebook.author}</p>
-                            <p className="text-sm text-gray-500">{ebook.genre.join(', ')}</p>
+                            {ebook.metadata && ebook.metadata.coverImagePath ? (
+                                <img
+                                    src={`http://localhost:8080/ebookviewer/ebook/image/${ebook.metadata.coverImagePath}`}
+                                    alt={ebook.title}
+                                    className="w-full h-full object-cover"
+                                />
+                            ) : (
+                                <div className="w-full h-full flex items-center justify-center bg-surface-a10 text-surface-a50 italic text-center p-4">
+                                    No Cover Available
+                                </div>
+                            )}
+
+                            <div className="absolute inset-0 bg-linear-to-t from-dark-a0/90 via-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+
+                                <div className="absolute inset-s-0 top-0 left-0 justify-start items-left p-4">
+                                    <label className="text-sm text-dark-a0 bg-primary-a10/70 p-0.75 rounded-lg">
+                                        {ebook.metadata && ebook.metadata.fileFormat}
+                                    </label>
+                                </div>
+
+                                <h2 className="text-light-a0 text-lg font-bold leading-tight">{ebook.title}</h2>
+                                <p className="text-surface-a50 text-sm mt-1">{ebook.author}</p>
+
+                                <div className="mt-2 flex flex-wrap gap-1">
+                                    {ebook.genre.slice(0, 4).map((g) => (
+                                        <span
+                                            key={`${ebook._id.$oid}-${g}`}
+                                            onClick={(e) => {
+                                                e.preventDefault();
+                                                e.stopPropagation();
+                                                window.location.href = `/ebook/genre/${g}`;
+                                            }}
+                                            className="text-[11px] bg-light-a0/20 text-light-a0 px-2 py-0.5 rounded hover:bg-surface-a50 cursor-pointer relative z-10"
+                                        >
+                                            {g}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
                         </Link>
                     ))}
                 </div>
