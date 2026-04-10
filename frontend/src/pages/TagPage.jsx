@@ -40,8 +40,8 @@ export default function TagPage() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-8 gap-8">
                     {ebooks.map(ebook => (
                         <Link
-                            key={ebook._id.$oid}
-                            to={`/ebooks/${ebook._id.$oid}`}
+                            key={ebook._id}
+                            to={`/ebooks/${ebook._id}`}
                             className="relative group w-64 h-96 rounded-lg overflow-hidden shadow-xl hover:scale-105 transition-transform duration-300 bg-surface-a20"
                         >
 
@@ -72,7 +72,7 @@ export default function TagPage() {
                                 <div className="mt-2 flex flex-wrap gap-1">
                                     {ebook.genre.slice(0, 4).map((g, i) => (
                                         <span
-                                            key={`${ebook._id.$oid}-${g}`}
+                                            key={`${ebook._id}-${g}`}
                                             onClick={(e) => {
                                                 e.preventDefault();
                                                 e.stopPropagation();
