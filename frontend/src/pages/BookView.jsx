@@ -160,7 +160,7 @@ export default function BookView() {
                         <div>
                             <p className="text-surface-a50 text-sm">ISBN</p>
                             {isEditing ? (
-                                <input name="isbn" value={editData.isbn} onChange={handleChange} className="bg-transparent border-b border-surface-a40 w-full focus:outline-none" />
+                                <input name="isbn" value={editData.isbn} onChange={handleChange} className="bg-transparent border-b border-surface-a40 w-full focus:outline-none focus:border-primary-a0" />
                             ) : (
                                 <p className="font-medium">{ebook.isbn || "N/A"}</p>
                             )}
@@ -168,7 +168,7 @@ export default function BookView() {
                         <div>
                             <p className="text-surface-a50 text-sm">Published Date</p>
                             {isEditing ? (
-                                <input name="publishedDate" value={editData.publishedDate} onChange={handleChange} className="bg-transparent border-b border-surface-a40 w-full focus:outline-none" />
+                                <input name="publishedDate" value={editData.publishedDate} onChange={handleChange} className="bg-transparent border-b border-surface-a40 w-full focus:outline-none focus:border-primary-a0" />
                             ) : (
                                 <p className="font-medium">{ebook.publishedDate || "Unknown"}</p>
                             )}
@@ -180,7 +180,7 @@ export default function BookView() {
                                     name="metadata.fileFormat"
                                     value={editData.metadata?.fileFormat || ""}
                                     onChange={handleChange}
-                                    className="bg-transparent border-b border-surface-a40 w-full focus:outline-none"
+                                    className="bg-transparent border-b border-surface-a40 w-full focus:outline-none focus:border-primary-a0"
                                 />
                             ) : (
                                 <span className="bg-primary-a0 text-dark-a0 px-2 py-0.5 rounded text-xs font-bold uppercase">
@@ -195,7 +195,7 @@ export default function BookView() {
                                     name="metadata.language"
                                     value={editData.metadata?.language || ""}
                                     onChange={handleChange}
-                                    className="bg-transparent border-b border-surface-a40 w-full focus:outline-none"
+                                    className="bg-transparent border-b border-surface-a40 w-full focus:outline-none focus:border-primary-a0"
                                 />
                             ) : (
                                 <p className="font-medium">{ebook.metadata?.language || "N/A"}</p>
