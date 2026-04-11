@@ -36,7 +36,7 @@ export default function SearchResults() {
             <h1 className="text-4xl font-bold mb-2 text-light-a0">Search Results</h1>
             <p className="text-surface-a50 mb-6">Found {results.length} result(s) for "{query}"</p>
 
-            <hr className="border border-primary-a0 w-full mb-9"/>
+            <hr className="border border-primary-a0/70 w-full mb-9"/>
 
             {results.length === 0 ? (
                 <div className="text-light-a0 text-xl mt-10">No ebooks found matching your search.</div>
