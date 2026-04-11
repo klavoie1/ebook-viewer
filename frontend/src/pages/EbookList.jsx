@@ -34,7 +34,7 @@ export default function EbookList() {
         <div className="flex flex-col items-center justify-start min-h-screen bg-surface-a0 p-8">
             <h1 className="text-4xl font-bold mb-8 text-light-a0">All Ebooks</h1>
 
-            <hr className="border border-primary-a0 w-full mb-9"/>
+            <hr className="border border-primary-a0/70 w-full mb-9"/>
 
             <p className="text-surface-a50 mb-4 font-semibold">Total Ebooks: {totalCount}</p>
 
