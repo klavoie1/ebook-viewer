@@ -30,7 +30,7 @@ export default function TagPage() {
             <h1 className="text-4xl font-bold mb-2 text-light-a0 capitalize">{genre} Ebooks</h1>
             <p className="text-surface-a50 mb-6">Showing all books with genre as {genre}</p>
 
-            <hr className="border border-primary-a0 w-full mb-9"/>
+            <hr className="border border-primary-a0/70 w-full mb-9"/>
 
             <p className="relative flex flex-row justify-end text-surface-a50 mb-6 top-0">Total {genre} Ebooks: {ebooks.length}</p>
 
