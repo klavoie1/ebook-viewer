@@ -1,14 +1,14 @@
 
 export default function Footer() {
     return (
-        <footer className="bg-surface-a20 text-white p-6 border-t-2 border-surface-a50">
+        <footer className="bg-surface-a10/30 text-white p-6 border-t border-surface-a30 inset-shadow-sm inset-shadow-primary-a0/50">
             <div className="grid grid-cols-3 items-center">
 
                 <div></div>
 
                 <div className="text-center">
                     <p className="text-md font-bold text-light-a0">
-                        {new Date().getFullYear()} Kenneth
+                        {new Date().getFullYear()}
                     </p>
                 </div>
 
