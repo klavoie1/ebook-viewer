@@ -124,11 +124,38 @@ export default function BookView() {
                         <div className="ml-4 flex gap-2">
                             {isEditing ? (
                                 <>
-                                    <button onClick={handleUpdate} className="bg-success-a0 hover:bg-success-a10 text-white px-4 py-2 rounded-lg cursor-pointer transition-colors">Save</button>
-                                    <button onClick={() => { setIsEditing(false); setEditData(ebook); }} className="bg-surface-a30 hover:bg-surface-a40 text-white px-4 py-2 rounded-lg cursor-pointer transition-colors">Cancel</button>
+                                    <button
+                                        onClick={handleUpdate}
+                                        className="bg-success-a0 hover:bg-success-a10 text-white px-4 py-2 rounded-lg cursor-pointer transition-colors"
+                                    >
+                                        Save
+                                    </button>
+                                    <button
+                                        onClick={() => { setIsEditing(false); setEditData(ebook); }}
+                                        className="bg-surface-a30 hover:bg-surface-a40 text-light-a0 px-4 py-2 rounded-lg cursor-pointer transition-colors"
+                                    >
+                                        Cancel
+                                    </button>
                                 </>
                             ) : (
-                                <button onClick={() => setIsEditing(true)} className="bg-primary-a0 hover:bg-primary-a20 text-dark-a0 px-6 py-2 rounded-lg font-bold transition-transform hover:scale-105 cursor-pointer">Edit Info</button>
+                                <button
+                                    onClick={() => setIsEditing(true)}
+                                    className="relative group flex items-center bg-primary-a0 hover:bg-primary-a20 text-dark-a0 pl-9 pr-6 py-2 rounded-lg font-bold transition-transform hover:scale-105 cursor-pointer"
+                                >
+
+                                    <div className="absolute left-3 flex items-center pointer-events-none">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            height="20px"
+                                            viewBox="0 -960 960 960"
+                                            width="20px"
+                                            fill="currentColor"
+                                        >
+                                            <path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/>
+                                        </svg>
+                                    </div>
+                                    Edit Info
+                                </button>
                             )}
                         </div>
                     </div>
