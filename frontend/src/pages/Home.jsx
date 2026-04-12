@@ -10,7 +10,7 @@ export default function Home() {
             }}
         >
             <h1 className="text-5xl font-bold mb-4 text-light-a0">Welcome to Keeper</h1>
-            <p className="text-md text-surface-a40 mb-8 font-semibold bg-dark-a0/30 px-4 py-1 rounded-lg">
+            <p className="text-md text-surface-a50 mb-8 font-semibold bg-dark-a0/30 px-4 py-1 rounded-lg">
                 Manage and explore your Ebook collection
             </p>
             <Link
