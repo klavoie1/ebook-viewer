@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
 import { getEbookById, updateEbook } from "../services/EbookListService.jsx";
+import remarkBreaks from "remark-breaks";
 
 export default function BookView() {
     const { id } = useParams();
@@ -96,7 +97,7 @@ export default function BookView() {
                 </div>
 
                 <div className="w-full md:w-2/3 flex flex-col">
-                    <div className="flex justify-between items-start mb-4">
+                    <div className="flex justify-between items-start mb-1">
                         <div className="flex-1">
                             {isEditing ? (
                                 <input
@@ -173,13 +174,13 @@ export default function BookView() {
                                 className="w-full h-48 bg-surface-a10 p-4 rounded-lg border border-surface-a30 focus:border-primary-a0 focus:outline-none leading-relaxed text-lg"
                             />
                         ) : (
-                            <div className="leading-relaxed text-lg prose prose-invert max-w-none prose-p:mb-4 text-light-a0/90">
+                            <div className="leading-relaxed text-lg prose prose-invert max-w-none prose-p:mb-4 text-text-a0">
                                 {ebook.summary ? (
-                                    <ReactMarkdown>{ebook.summary}</ReactMarkdown>
+                                    <ReactMarkdown remarkPlugins={[remarkBreaks]}>{ebook.summary}</ReactMarkdown>
                                 ) : (
                                     <span className="italic text-surface-a40">No summary available.</span>
                                 )}
-                            </div>
+                            </div> 
                         )}
                     </div>
 
