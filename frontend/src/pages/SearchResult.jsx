@@ -33,10 +33,11 @@ export default function SearchResults() {
 
     return (
         <div className="flex flex-col items-center justify-start min-h-screen bg-surface-a0 p-8">
-            <h1 className="text-4xl font-bold mb-2 text-light-a0">Search Results</h1>
-            <p className="text-surface-a50 mb-6">Found {results.length} result(s) for "{query}"</p>
-
-            <hr className="border border-primary-a0/70 w-full mb-9"/>
+            <div className="w-full">
+                <h1 className="text-4xl font-bold mb-2 text-light-a0">Search Results</h1>
+                <p className="text-surface-a50 mb-4 font-semibold">Found {results.length} result(s) for "{query}"</p>
+                <hr className="border border-primary-a0/70 w-full mb-9"/>
+            </div>
 
             {results.length === 0 ? (
                 <div className="text-light-a0 text-xl mt-10">No ebooks found matching your search.</div>

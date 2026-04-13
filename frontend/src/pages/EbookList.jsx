@@ -32,11 +32,11 @@ export default function EbookList() {
 
     return (
         <div className="flex flex-col items-center justify-start min-h-screen bg-surface-a0 p-8">
-            <h1 className="text-4xl font-bold mb-8 text-light-a0">All Ebooks</h1>
-
-            <hr className="border border-primary-a0/70 w-full mb-9"/>
-
-            <p className="text-surface-a50 mb-4 font-semibold">Total Ebooks: {totalCount}</p>
+                <div className="w-full">
+                    <h1 className="text-4xl font-bold mb-2 text-light-a0">All Ebooks</h1>
+                    <p className="text-surface-a50 mb-4 font-semibold">Total Ebooks: {totalCount}</p>
+                    <hr className="border border-primary-a0/70 w-full mb-9"/>
+                </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-8">
 
@@ -44,7 +44,7 @@ export default function EbookList() {
                     <Link
                         key={ebook._id}
                         to={`/ebooks/${ebook._id}`}
-                        className="relative group w-64 h-96 rounded-lg overflow-hidden shadow-xl hover:scale-105 transition-transform duration-300 bg-surface-a20"
+                        className="relative group w-64 h-96 rounded-lg overflow-hidden shadow-xl hover:scale-105 transition-transform duration-100 bg-surface-a20"
                     >
 
                         {ebook.metadata && ebook.metadata.coverImagePath ? (

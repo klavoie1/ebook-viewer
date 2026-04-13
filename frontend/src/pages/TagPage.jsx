@@ -27,12 +27,12 @@ export default function TagPage() {
 
     return (
         <div className="flex flex-col items-center justify-start min-h-screen bg-surface-a0 p-8">
-            <h1 className="text-4xl font-bold mb-2 text-light-a0 capitalize">{genre} Ebooks</h1>
-            <p className="text-surface-a50 mb-6">Showing all books with genre as {genre}</p>
-
-            <hr className="border border-primary-a0/70 w-full mb-9"/>
-
-            <p className="relative flex flex-row justify-end text-surface-a50 mb-6 top-0">Total {genre} Ebooks: {ebooks.length}</p>
+            <div className="w-full">
+                <h1 className="text-4xl font-bold mb-2 text-light-a0 capitalize">{genre} Ebooks</h1>
+                <p className="text-surface-a50 mb-2">Showing all books with genre as {genre}</p>
+                <p className="text-surface-a50 mb-4 font-semibold italic text-sm">Total {genre} Ebooks: {ebooks.length}</p>
+                <hr className="border border-primary-a0/70 w-full mb-9"/>
+            </div>
 
             {ebooks.length === 0 ? (
                 <div className="text-light-a0 text-xl mt-10">No ebooks found for this tag.</div>
