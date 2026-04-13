@@ -9,7 +9,7 @@ export default function Home() {
                 backgroundImage: `linear-gradient(rgba(18, 18, 18, 0.92), rgba(18, 18, 18, 0.99)), url(${backgroundImage})`
             }}
         >
-            <h1 className="text-5xl font-bold mb-4 text-light-a0">Welcome to Keeper</h1>
+            <h1 className="text-5xl font-bold mb-4 text-text-a0">Welcome to Keeper</h1>
             <p className="text-md text-surface-a50 mb-8 font-semibold bg-dark-a0/30 px-4 py-1 rounded-lg">
                 Manage and explore your Ebook collection
             </p>
