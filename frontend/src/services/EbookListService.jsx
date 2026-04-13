@@ -46,3 +46,21 @@ export const updateEbook = async (id, ebookData) => {
 
     return await response.json();
 };
+
+export const deleteEbook = async (id) => {
+    const response = await fetch(`${API_BASE_URL}/ebook/id/${id}`);
+    if (!response.ok) {
+        throw new Error(`Failed to delete ebook with id: ${id}`);
+    }
+    return await response.json();
+}
+
+export const addEbook = async (ebookData) => {
+    const response = await fetch(`${API_BASE_URL}/ebook/add`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(ebookData),
+    })
+}
