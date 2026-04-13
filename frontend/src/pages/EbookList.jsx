@@ -31,21 +31,21 @@ export default function EbookList() {
     if (loading) return <div className="flex items-center justify-center p-8 text-light-a0 max-h-screen h-screen">Loading...</div>;
 
     return (
-        <div className="flex flex-col items-center justify-start min-h-screen bg-surface-a0 p-8">
+            <div className="flex flex-col grow items-center justify-start min-h-screen bg-surface-a0 p-8 relative">
+
                 <div className="w-full">
                     <h1 className="text-4xl font-bold mb-2 text-light-a0">All Ebooks</h1>
                     <p className="text-surface-a50 mb-4 font-semibold">Total Ebooks: {totalCount}</p>
                     <hr className="border border-primary-a0/70 w-full mb-9"/>
                 </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-8">
-
-                {ebooks.map(ebook => (
-                    <Link
-                        key={ebook._id}
-                        to={`/ebooks/${ebook._id}`}
-                        className="relative group w-64 h-96 rounded-lg overflow-hidden shadow-xl hover:scale-105 transition-transform duration-100 bg-surface-a20"
-                    >
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-8 gap-8">
+                    {ebooks.map(ebook => (
+                        <Link
+                            key={ebook._id}
+                            to={`/ebooks/${ebook._id}`}
+                            className="relative group w-64 h-96 rounded-lg overflow-hidden shadow-xl hover:scale-105 transition-transform duration-300 bg-surface-a20"
+                        >
 
                         {ebook.metadata && ebook.metadata.coverImagePath ? (
                             <img
@@ -86,7 +86,25 @@ export default function EbookList() {
                         </div>
                     </Link>
                 ))}
+                </div>
+
+                <Link
+                    to="/ebooks/new"
+                    className="sticky bottom-8 self-end mr-8 mt-auto z-50 bg-primary-a0 text-dark-a0 p-4 rounded-full shadow-2xl hover:scale-110 transition-transform active:scale-95 cursor-pointer group"
+                    title="Add New Book"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        height="32px"
+                        viewBox="0 -960 960 960"
+                        width="32px"
+                        fill="currentColor"
+                        className="block"
+                    >
+                        <path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/>
+                    </svg>
+                </Link>
+
             </div>
-        </div>
     );
 }
