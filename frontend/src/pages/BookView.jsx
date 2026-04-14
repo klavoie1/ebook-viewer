@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import ReactMarkdown from "react-markdown";
-import { getEbookById, updateEbook } from "../services/EbookListService.jsx";
+import {deleteEbook, getEbookById, updateEbook} from "../services/EbookListService.jsx";
 import remarkBreaks from "remark-breaks";
 
 export default function BookView() {
     const { id } = useParams();
     const [ebook, setEbook] = useState(null);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     const [isEditing, setIsEditing] = useState(false);
     const [editData, setEditData] = useState({});
@@ -70,6 +71,19 @@ export default function BookView() {
             }));
         } else {
             setEditData(prev => ({ ...prev, [name]: value }));
+        }
+    };
+
+    const handleDelete = async () => {
+        if (window.confirm("Are you sure you want to delete this book? This action cannot be undone.")) {
+            try {
+                await deleteEbook(id);
+                alert("Book deleted successfully!");
+                navigate("/ebooks");
+            } catch (error) {
+                console.error("Error deleting book:", error);
+                alert("Failed to delete the book.");
+            }
         }
     };
 
@@ -180,7 +194,7 @@ export default function BookView() {
                                 ) : (
                                     <span className="italic text-surface-a40">No summary available.</span>
                                 )}
-                            </div> 
+                            </div>
                         )}
                     </div>
 
@@ -274,6 +288,20 @@ export default function BookView() {
                             </div>
                         )}
                     </div>
+
+                    {isEditing && (
+                        <div className="mt-8 pt-8 border-t border-surface-a30">
+                            <button
+                                onClick={handleDelete}
+                                className="flex items-center gap-2 bg-danger-a0 hover:bg-danger-a20 text-light-a0 px-6 py-2 rounded-lg cursor-pointer transition-all hover:scale-105"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="currentColor">
+                                    <path d="M280-120q-33 0-56.5-23.5T200-200v-520h-40v-80h200v-40h240v40h200v80h-40v520q0 33-23.5 56.5T680-120H280Zm400-600H280v520h400v-520ZM360-280h80v-360h-80v360Zm160 0h80v-360h-80v360ZM280-720v520-520Z"/>
+                                </svg>
+                                Delete Book
+                            </button>
+                        </div>
+                    )}
 
                     {!isEditing && (
                         <div className="mt-12">
