@@ -70,7 +70,7 @@ export default function TagPage() {
                                 <p className="text-surface-a50 text-sm mt-1">{ebook.author}</p>
 
                                 <div className="mt-2 flex flex-wrap gap-1">
-                                    {ebook.genre.slice(0, 4).map((g, i) => (
+                                    {ebook.genre.slice(0, 4).map((g) => (
                                         <span
                                             key={`${ebook._id}-${g}`}
                                             onClick={(e) => {
