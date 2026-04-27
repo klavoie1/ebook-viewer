@@ -77,7 +77,7 @@ public class EbookController {
     @GetMapping("/image/{filename}")
     public ResponseEntity<Resource> getCoverImage(@PathVariable String filename) {
         try {
-            Path imagePath = Paths.get("/home/kenneth/Documents/JavaCoding/EbookViewerCoverImages").resolve(filename);
+            Path imagePath = Paths.get("/home/klavoie/Documents/JavaCoding/EbookViewerCoverImages").resolve(filename);
 
             Resource resource = new FileSystemResource(imagePath);
 
